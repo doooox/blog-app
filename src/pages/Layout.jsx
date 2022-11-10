@@ -5,14 +5,14 @@ import Routes from '../Routes'
 const Layout = () => {
   return (
     <div>
-        <nav>
-            <ul>
-                <li>
-                    <Link to='/posts'>Posts</Link>
-                </li>
-            </ul>
-        </nav>
-        <Routes/>
+      <nav>
+        <ul>
+          <li>
+            <Link to='/posts'>Posts</Link>
+          </li>
+        </ul>
+      </nav>
+      <Routes />
     </div>
   )
 }
