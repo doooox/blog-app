@@ -1,39 +1,17 @@
-import React, { useState } from 'react'
-import PostsService from '../services/PostsService'
-import { useHistory } from 'react-router-dom'
+import React from 'react'
 
-const NewPostForm = () => {
-    const [newPost, setNewPost] = useState({
-        title: "",
-        text: "",
-        timestamp: new Date().toDateString()
-    })
-    let history = useHistory();
-
-    const postTitleHandler = (e) => {
-        setNewPost({ ...newPost, title: e.target.value })
-    }
-    const postTextHandler = (e) => {
-        setNewPost({ ...newPost, text: e.target.value })
-    }
-    const onSubnitHandler = async (e) => {
-        e.preventDefault();
-        await PostsService.add(newPost);
-        history.push("/posts")
-    }
-
-    const resetHandler = () => {
-        setNewPost({
-            title: "",
-            text: "",
-            timestamp: ''
-        })
-    }
-
+const NewPostForm = ({
+    newPost,
+    onPostTitleHandler,
+    onPostTextHandler,
+    onResetButton,
+    onFormSubmit,
+}) => {
+   
     return (
         <div>
             <h1>Add new post</h1>
-            <form onSubmit={onSubnitHandler}>
+            <form onSubmit={onFormSubmit}>
                 <label htmlFor="post-title">Enter post title</label>
                 <input
                     type="text"
@@ -41,7 +19,7 @@ const NewPostForm = () => {
                     required
                     minLength={2}
                     value={newPost.title}
-                    onChange={postTitleHandler}
+                    onChange={onPostTitleHandler}
                 />
                 <label htmlFor="post-text">Enter the text of a post</label>
                 <textarea
@@ -51,15 +29,15 @@ const NewPostForm = () => {
                     required
                     maxLength={300}
                     value={newPost.text}
-                    onChange={postTextHandler}
+                    onChange={onPostTextHandler}
                 ></textarea>
                 <input
                     type="hidden"
                     value={newPost.timestamp}
                     onChange={() => { }}
-                />
+                /> 
                 <button type="submit">Submit</button>
-                <button type='button' onClick={resetHandler}>Reset</button>
+                <button type='button' onClick={onResetButton}>Reset</button>
             </form>
         </div>
     )

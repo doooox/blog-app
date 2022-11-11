@@ -5,7 +5,6 @@ import PostsService from '../services/PostsService';
 const AppPosts = () => {
   const { id } = useParams;
   const [posts, setPosts] = useState([]);
-  const [postId, setPostId] = useState([])
 
   const getAllPosts = async () => {
     const posts = await PostsService.getAll();
@@ -21,9 +20,16 @@ const AppPosts = () => {
         <div key={post.id}>
           <h1>{post.title}</h1>
           <p>{post.text}</p>
-          <div>  <Link to={`/posts/${post.id}`}>
-            View Post
-          </Link></div>
+          <div>
+            <Link to={`/posts/${post.id}`}>
+              View Post
+            </Link>
+          </div>
+          <div>
+            <Link to={`/edit/${post.id}`}>
+              Edit Post
+            </Link>
+          </div>
 
         </div>
       ))}

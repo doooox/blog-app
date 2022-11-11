@@ -2,21 +2,22 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PostsService from "../services/PostsService";
 function SinglePost() {
-  const [post, setPost] = useState('');
+  const [post, setPost] = useState("");
   const { id } = useParams();
 
-  async function getSinglePost() {
+  const getSinglePost = async () => {
     const data = await PostsService.get(id);
     setPost(data);
+    console.log(data);
   }
-
-  useEffect(() => { getSinglePost() }, []);
-
+  useEffect(() => {
+    getSinglePost();
+  }, []);
   return (
     <div>
       <h1>{post.title}</h1>
       <p>{post.text}</p>
-      <small>{post.createdAt}</small>
+      <small>Post dreated ad: {post.createdAt}</small>
     </div>
   );
 }
