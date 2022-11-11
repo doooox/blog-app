@@ -19,6 +19,14 @@ class PostsService {
     }
     return [];
   }
+  async add(post) {
+    try {
+      const { data } = await axiosObj.post("/api/posts", post);
+      return data;
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
+  }
 }
 
 export default new PostsService();

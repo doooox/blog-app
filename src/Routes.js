@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import AddPost from "./pages/AddPost";
 import AppPosts from "./pages/AppPosts";
 import SinglePost from "./pages/SInglePost";
 
@@ -12,6 +13,9 @@ const Routes = () => {
         </Route>
         <Route path="/posts/:id">
           <SinglePost />
+        </Route>
+        <Route path="/add">
+          <AddPost />
         </Route>
       </Switch>
     </div>
