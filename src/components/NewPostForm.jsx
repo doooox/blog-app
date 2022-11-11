@@ -3,7 +3,7 @@ import PostsService from '../services/PostsService'
 import { useHistory } from 'react-router-dom'
 
 const NewPostForm = () => {
-    const [newPost, setNepPost] = useState({
+    const [newPost, setNewPost] = useState({
         title: "",
         text: "",
         timestamp: new Date().toDateString()
@@ -11,15 +11,23 @@ const NewPostForm = () => {
     let history = useHistory();
 
     const postTitleHandler = (e) => {
-        setNepPost({ ...newPost, title: e.target.value })
+        setNewPost({ ...newPost, title: e.target.value })
     }
     const postTextHandler = (e) => {
-        setNepPost({ ...newPost, text: e.target.value })
+        setNewPost({ ...newPost, text: e.target.value })
     }
     const onSubnitHandler = async (e) => {
         e.preventDefault();
         await PostsService.add(newPost);
         history.push("/posts")
+    }
+
+    const resetHandler = () => {
+        setNewPost({
+            title: "",
+            text: "",
+            timestamp: ''
+        })
     }
 
     return (
@@ -47,6 +55,7 @@ const NewPostForm = () => {
                     onChange={() => { }}
                 />
                 <button type="submit">Submit</button>
+                <button type='button' onClick={resetHandler}>Reset</button>
             </form>
         </div>
     )
