@@ -38,6 +38,8 @@ const NewPostForm = () => {
                 <input
                     type="text"
                     id="post-title"
+                    required
+                    minLength={2}
                     value={newPost.title}
                     onChange={postTitleHandler}
                 />
@@ -46,6 +48,8 @@ const NewPostForm = () => {
                     id="post-text"
                     cols="30"
                     rows="10"
+                    required
+                    maxLength={300}
                     value={newPost.text}
                     onChange={postTextHandler}
                 ></textarea>
