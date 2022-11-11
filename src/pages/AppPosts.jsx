@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import { axiosObj } from '../services/AxiosService';
 import PostsService from '../services/PostsService';
 
 const AppPosts = () => {
@@ -9,6 +10,13 @@ const AppPosts = () => {
   const getAllPosts = async () => {
     const posts = await PostsService.getAll();
     setPosts(posts)
+  }
+
+  const deletePostHandler = async (id) => {
+    const deletePost = await PostsService.delete(id)
+    if (deletePost) {
+      setPosts([...posts.filter((post) => id !== post.id)])
+    }
   }
 
   useEffect(() => { getAllPosts() }, []);
@@ -22,15 +30,17 @@ const AppPosts = () => {
           <p>{post.text}</p>
           <div>
             <Link to={`/posts/${post.id}`}>
-              View Post
+              <button>View Post</button>
             </Link>
           </div>
           <div>
             <Link to={`/edit/${post.id}`}>
-              Edit Post
+              <button> Edit Post </button>
             </Link>
           </div>
-
+          <div>
+            <button type='button' onClick={() => deletePostHandler(post.id)}> Delete Post </button>
+          </div>
         </div>
       ))}
     </div>

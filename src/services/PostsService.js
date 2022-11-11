@@ -35,6 +35,14 @@ class PostsService {
       console.log("Something went wrong!", error);
     }
   }
+  async delete(id){
+    try{
+      const data = await axiosObj.delete(`api/posts/${id}`)
+      return data;
+    }catch(error){
+      console.log("Something went wrong", error);
+    }
+  }
 }
 
 export default new PostsService();
