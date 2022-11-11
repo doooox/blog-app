@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import SinglePostComponent from '../components/SinglePostComponent';
+import { Link, useParams } from 'react-router-dom';
 import PostsService from '../services/PostsService';
 
 const AppPosts = () => {
+  const { id } = useParams;
   const [posts, setPosts] = useState([]);
+  const [postId, setPostId] = useState([])
 
   const getAllPosts = async () => {
     const posts = await PostsService.getAll();
     setPosts(posts)
-    console.log(posts);
   }
-  useEffect(() => { getAllPosts() }, [])
+
+  useEffect(() => { getAllPosts() }, []);
+
   return (
     <div>
       <h1>Posts</h1>
       {posts.map((post) => (
         <div key={post.id}>
-          <SinglePostComponent title={post.title} text={post.text} createdAt={post.createdAt} />
+          <h1>{post.title}</h1>
+          <p>{post.text}</p>
+          <div>  <Link to={`/posts/${post.id}`}>
+            View Post
+          </Link></div>
+
         </div>
       ))}
     </div>
