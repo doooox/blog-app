@@ -3,12 +3,12 @@ import { Link, useParams } from 'react-router-dom';
 import PostsService from '../services/PostsService';
 
 const AppPosts = () => {
-  const { id } = useParams;
   const [posts, setPosts] = useState([]);
 
   const getAllPosts = async () => {
     const posts = await PostsService.getAll();
     setPosts(posts)
+    console.log(posts);
   }
 
   const deletePostHandler = async (id) => {
@@ -27,6 +27,8 @@ const AppPosts = () => {
         <div key={post.id}>
           <h1>{post.title}</h1>
           <p>{post.text}</p>
+          {(post.comments.length) && (
+                <small>This post has: {post.comments.length} comments</small>)}
           <div>
             <Link to={`/posts/${post.id}`}>
               <button>View Post</button>

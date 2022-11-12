@@ -3,7 +3,7 @@ import { axiosObj } from "./AxiosService";
 class PostsService {
   async getAll() {
     try {
-      const data = await axiosObj.get("/api/posts");
+      const data = await axiosObj.get('api/posts?filter={"include":["comments"]}');
       return data.data;
     } catch (error) {
       console.log("Something went wrong", error);
