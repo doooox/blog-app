@@ -31,11 +31,6 @@ const NewPostForm = ({
                     value={newPost.text}
                     onChange={onPostTextHandler}
                 ></textarea>
-                <input
-                    type="hidden"
-                    value={newPost.timestamp}
-                    onChange={() => { }}
-                /> 
                 <button type="submit">Submit</button>
                 <button type='button' onClick={onResetButton}>Reset</button>
             </form>

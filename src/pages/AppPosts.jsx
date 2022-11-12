@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PostsService from '../services/PostsService';
 
 const AppPosts = () => {
@@ -26,9 +26,8 @@ const AppPosts = () => {
       {posts.map((post) => (
         <div key={post.id}>
           <h1>{post.title}</h1>
-          <p>{post.text}</p>
           {(post.comments.length) && (
-                <small>This post has: {post.comments.length} comments</small>)}
+            <small>This post has: {post.comments.length} comments</small>)}
           <div>
             <Link to={`/posts/${post.id}`}>
               <button>View Post</button>

@@ -9,7 +9,6 @@ const AddPost = () => {
     const [newPost, setNewPost] = useState({
         title: "",
         text: "",
-        craatedAt: new Date().toDateString()
     })
 
     const postTitleHandler = (e) => {
@@ -43,7 +42,6 @@ const AddPost = () => {
         setNewPost({
             title: "",
             text: "",
-            craatedAt: new Date().toDateString()
         })
     }
 
