@@ -6,22 +6,24 @@ class PostsService {
       const data = await axiosObj.get("/api/posts");
       return data.data;
     } catch (error) {
-      // console.log("Something went wrong", error);
+      console.log("Something went wrong", error);
     }
     return [];
   }
   async get(id) {
     try {
-      const  data  = await axiosObj.get(`api/posts/${id}`);
+      const data = await axiosObj.get(
+        `api/posts/${id}?filter={"include":["comments"]}`
+      );
       return data.data;
     } catch (error) {
-      console.log("Get ",error);
+      console.log("Something went wrong", error);
     }
     return [];
   }
   async add(post) {
     try {
-      const  data  = await axiosObj.post("/api/posts", post);
+      const data = await axiosObj.post("/api/posts", post);
       return data;
     } catch (error) {
       console.log("Something went wrong", error);
@@ -29,19 +31,28 @@ class PostsService {
   }
   async edit(id, post) {
     try {
-      const { data } = await axiosObj.put(`api/posts/${id}`, post);
+      const data = await axiosObj.put(`api/posts/${id}`, post);
       return data.data;
     } catch (error) {
       console.log("Something went wrong!", error);
     }
   }
-  async delete(id){
-    try{
-      const data = await axiosObj.delete(`api/posts/${id}`)
+  async delete(id) {
+    try {
+      const data = await axiosObj.delete(`api/posts/${id}`);
       return data;
-    }catch(error){
+    } catch (error) {
       console.log("Something went wrong", error);
     }
+  }
+  async addComment(comment, postId) {
+    try {
+      const data = await axiosObj.post(`api/posts/${postId}/comments`, comment);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+    return [];
   }
 }
 

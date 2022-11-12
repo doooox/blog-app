@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
-import { axiosObj } from '../services/AxiosService';
 import PostsService from '../services/PostsService';
 
 const AppPosts = () => {
