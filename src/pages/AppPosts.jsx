@@ -4,10 +4,13 @@ import PostsService from '../services/PostsService';
 
 const AppPosts = () => {
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
 
   const getAllPosts = async () => {
+    setIsLoading(true)
     const posts = await PostsService.getAll();
     setPosts(posts)
+    setIsLoading(false)
     console.log(posts);
   }
 
@@ -23,7 +26,7 @@ const AppPosts = () => {
   return (
     <div>
       <h1>Posts</h1>
-      {posts.map((post) => (
+      { (!isLoading) && posts.map((post) => (
         <div key={post.id}>
           <h1>{post.title}</h1>
           {(post.comments.length) && (
