@@ -1,13 +1,14 @@
 import React from 'react'
+import "../styles/AddComment.css"
 const AddComment = ({
     getCommentText,
     onSubmitComment,
     comment
 }) => {
     return (
-        <div>
+        <div >
             <h2>Add Comment</h2>
-            <form onSubmit={onSubmitComment}>
+            <form onSubmit={onSubmitComment} className='new-comment-wrapper'>
                 <label htmlFor="comment-text">Enter Comment</label>
                 <textarea
                     id="comment-text"
@@ -17,7 +18,7 @@ const AddComment = ({
                     onChange={getCommentText}
                 >
                 </textarea>
-                <button type="submit">Submit</button>
+                <button type="submit" className='comment-btn'>Submit</button>
             </form>
         </div>
     )

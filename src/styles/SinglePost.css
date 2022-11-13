@@ -1,0 +1,37 @@
+.comment-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+    padding: 1rem;
+    border: 1px solid black;
+    max-width: 25rem;
+    margin: 1rem auto;
+}
+.comment-wrapper p{
+    text-align: start;
+}
+.post-wrapper h1{
+    font-size: 2rem;
+}
+.posts-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+.posts-btn button, Link{
+    background-color: rgb(32, 148, 232);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.2rem;
+    margin: 0 0.2rem;
+    transition: ease-in 0.3s;
+}
+.posts-btn button:hover{
+    background-color: rgb(0, 83, 142);
+    padding: 0.4rem;
+    cursor: pointer;
+}

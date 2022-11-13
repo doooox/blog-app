@@ -1,0 +1,16 @@
+.navbar{
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    background-color: white;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .navbar .navbar-link{
+    text-decoration: none;
+    color: rgb(25, 68, 127);
+    font-size: 1.2rem;
+  }

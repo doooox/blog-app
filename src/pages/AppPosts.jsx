@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import PostsService from '../services/PostsService';
+import "../styles/AppPost.css"
 
 const AppPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -27,11 +28,12 @@ const AppPosts = () => {
     <div>
       <h1>Posts</h1>
       { (!isLoading) && posts.map((post) => (
-        <div key={post.id}>
+        <div key={post.id} className='posts-wrapper'>
           <h1>{post.title}</h1>
           {(post.comments.length) && (
             <small>This post has: {post.comments.length} comments</small>)}
-          <div>
+         <div className='posts-btn'>
+         <div >
             <Link to={`/posts/${post.id}`}>
               <button>View Post</button>
             </Link>
@@ -45,6 +47,8 @@ const AppPosts = () => {
             <button type='button' onClick={() => deletePostHandler(post.id)}> Delete Post </button>
           </div>
         </div>
+         </div>
+         
       ))}
     </div>
   )

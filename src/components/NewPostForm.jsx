@@ -1,13 +1,14 @@
 import React from 'react'
+import "../styles/AddPost.css"
 
 const NewPostForm = ({
-   formik
+    formik
 }) => {
-   console.log(formik.touched);
+    console.log(formik.touched);
     return (
-        <div>
+        <div className='wrapper'>
             <h1>Add new post</h1>
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit} className="form">
                 <label htmlFor="post-title">Enter post title</label>
                 <input
                     type="text"
@@ -28,9 +29,11 @@ const NewPostForm = ({
                     value={formik.values.text}
                     onChange={formik.handleChange}
                 ></textarea>
-                   {formik.touched.text && formik.errors.text ? <p>{formik.errors.text}</p> : null}
-                <button type="submit">Submit</button>
-                <button type='button' onClick={formik.handleReset}>Reset</button>
+                {formik.touched.text && formik.errors.text ? <p>{formik.errors.text}</p> : null}
+                <div className='btn'>
+                    <button type="submit">Submit</button>
+                    <button type='button' onClick={formik.handleReset}>Reset</button>
+                </div>
             </form>
         </div>
     )

@@ -1,0 +1,28 @@
+.new-comment-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 80%;
+    margin:auto;
+}
+.posts-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+.comment-btn{
+    background-color: rgb(32, 148, 232);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.2rem;
+    margin: 0 0.2rem;
+    transition: ease-in 0.3s;
+}
+.comment-btn:hover{
+    background-color: rgb(0, 83, 142);
+    padding: 0.4rem;
+    cursor: pointer;
+}
