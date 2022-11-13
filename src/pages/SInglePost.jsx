@@ -19,6 +19,7 @@ function SinglePost() {
     console.log(typeof(date));
   }
 
+
   useEffect(() => {
     getSinglePost();
   }, []);
@@ -36,7 +37,7 @@ function SinglePost() {
     <div>
       <h1>{post.title}</h1>
       <p>{post.text}</p>
-      <small>Post updated ad: {fromattedDate} </small>
+      <small>Post created ad: {fromattedDate} </small>
       <div>
         <h4>Comments:</h4>
         {post.comments && post.comments.map((comment) => (
