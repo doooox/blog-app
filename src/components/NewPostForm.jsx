@@ -1,10 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../styles/AddPost.css"
+import { useFormik } from "formik"
+import * as Yup from 'yup'
+
 
 const NewPostForm = ({
-    formik
+    data,
+    isEditMode,
+    onSubmit,
 }) => {
-    console.log(formik.touched);
+    const fields = ['title', 'text']
+
+    const formik = useFormik({
+        initialValues: {
+            title: "",
+            text: "",
+        }, validationSchema: Yup.object({
+            title: Yup.string().min(2, "The title must contain more than 2 characters").required("The title is required"),
+            text: Yup.string().max(300, "The text of the post must contain less than 300 characters").required("The text of the post is required")
+        }),
+        onSubmit: onSubmit
+    })
+    console.log(data)
+    console.log({isEditMode})
+    useEffect(() => {
+        if (isEditMode && data) {
+            console.log({data})
+            formik.setValues({ title: data.title, text: data.text })
+        }
+    }, [isEditMode, data])
+    console.log(formik)
+    console.log(formik.values.title)
     return (
         <div className='wrapper'>
             <h1>Add new post</h1>
